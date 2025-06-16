@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fu_ru_dang_an/data/notifiers.dart';
+import 'package:fu_ru_dang_an/views/widget_tree.dart';
 
 void main() {
   runApp(const MyApp());
@@ -6,44 +8,31 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-      ),
-      home: const MyHomePage(title: '符文战场'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: [
-          Image.asset(
-            'assets/images/2.jpg',
-            width: double.maxFinite,
-            fit: BoxFit.cover,
+    return ValueListenableBuilder<bool>(
+      valueListenable: isDark,
+      builder: (context, darkMode, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            colorScheme: darkMode
+                ? ColorScheme.fromSeed(
+                    seedColor: Colors.lightBlue,
+                    brightness: Brightness.dark,
+                  )
+                : ColorScheme.fromSeed(
+                    seedColor: Colors.teal,
+                    brightness: Brightness.light,
+                  ),
+            useMaterial3: true,
           ),
-          Text("123",),
-        ],
-      ),
+
+          home: const WidgetTree(),
+        );
+      },
     );
   }
 }
