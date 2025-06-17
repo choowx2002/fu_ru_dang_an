@@ -61,6 +61,15 @@ class _HomePageState extends State<HomePage> {
 
   final List<String> cardRarities = ['全部', '普通', '不凡', '稀有', '史诗', '异画'];
 
+  final Map<String, String?> cardRarityIconMap = {
+    '普通': "assets/icons/common.png",
+    '不凡': "assets/icons/uncommon.png",
+    '稀有': "assets/icons/rare.png",
+    '史诗': "assets/icons/epic.png",
+    '异画': "assets/icons/overnumbered.png",
+    '全部': null,
+  };
+
   RangeValues _energyRangeValues = const RangeValues(0, 12);
   RangeValues _returnEnergyRangeValues = const RangeValues(0, 4);
   RangeValues _powerRangeValues = const RangeValues(0, 12);
@@ -75,30 +84,31 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 16),
-
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 500.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    onChanged: (value) {
-                      setState(() {
-                        _searchText = value.trim();
-                      });
-                    },
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: '输入卡牌名称搜索',
+              // 搜索框
+              Expanded(
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      _searchText = value.trim();
+                    });
+                  },
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 10,
                     ),
+                    border: OutlineInputBorder(),
+                    hintText: '输入卡牌名称搜索',
                   ),
                 ),
               ),
+              const SizedBox(width: 8.0),
+              // 筛选按钮
               IconButton(
                 onPressed: () {
                   setState(() {
@@ -107,8 +117,9 @@ class _HomePageState extends State<HomePage> {
                 },
                 icon: Icon(
                   isFilter ? Icons.filter_alt_sharp : Icons.filter_alt_outlined,
-                  size: 36.0,
+                  size: 28.0,
                 ),
+                tooltip: '筛选',
               ),
             ],
           ),
@@ -214,9 +225,22 @@ class _HomePageState extends State<HomePage> {
                             value: selectedRarity,
                             hint: const Text("选择稀有度"),
                             items: cardRarities.map((rarity) {
+                              final iconPath = cardRarityIconMap[rarity];
                               return DropdownMenuItem<String>(
                                 value: rarity,
-                                child: Text(rarity),
+                                child: iconPath != null
+                                    ? Row(
+                                        children: [
+                                          Image.asset(
+                                            iconPath,
+                                            width: 20,
+                                            height: 20,
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Text(rarity),
+                                        ],
+                                      )
+                                    : Text(rarity),
                               );
                             }).toList(),
                             onChanged: (value) {
@@ -448,10 +472,10 @@ class _HomePageState extends State<HomePage> {
                 return GridView.builder(
                   padding: const EdgeInsets.all(8),
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8,
-                    childAspectRatio: 3 / 4,
+                    maxCrossAxisExtent: 150,
+                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 12,
+                    childAspectRatio: 0.6,
                   ),
                   itemCount: filtered.length,
                   itemBuilder: (context, index) {
@@ -460,21 +484,13 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Image.network(
                           card.frontImage,
-                          width: 150,
-                          height: 210,
                           fit: BoxFit.cover,
                           loadingBuilder: (context, child, loadingProgress) {
                             if (loadingProgress == null) return child;
-                            return Container(
-                              width: 150,
-                              height: 210,
-                              color: Colors.grey.shade300,
-                            );
+                            return Container(color: Colors.grey.shade300);
                           },
                           errorBuilder: (context, error, stackTrace) {
                             return Container(
-                              width: 150,
-                              height: 210,
                               color: Colors.grey.shade300,
                               child: const Icon(Icons.broken_image),
                             );
