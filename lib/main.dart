@@ -1,8 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fu_ru_dang_an/data/notifiers.dart';
 import 'package:fu_ru_dang_an/views/widget_tree.dart';
-
+import 'package:window_size/window_size.dart';
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    setWindowTitle('符文构筑小工具');
+    setWindowFrame(const Rect.fromLTWH(100, 100, 1024, 700));
+  }
   runApp(const MyApp());
 }
 
@@ -30,7 +38,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
 
-          home: const WidgetTree(),
+          home: const SafeArea(child: WidgetTree()),
         );
       },
     );
