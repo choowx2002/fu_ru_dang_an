@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:fu_ru_dang_an/data/config/constant.dart';
 import 'package:fu_ru_dang_an/data/models/card_model.dart';
+import 'package:fu_ru_dang_an/views/widgets/card_image.dart';
 import 'package:fu_ru_dang_an/views/widgets/card_item.dart';
 import 'package:fu_ru_dang_an/views/widgets/filter_controls.dart';
 import 'package:fu_ru_dang_an/views/widgets/search_bar.dart';
@@ -74,7 +75,9 @@ class _CardListPageState extends State<CardListPage> {
                     });
                   },
                   icon: Icon(
-                    isFilter ? Icons.filter_alt_sharp : Icons.filter_alt_outlined,
+                    isFilter
+                        ? Icons.filter_alt_sharp
+                        : Icons.filter_alt_outlined,
                     size: 28.0,
                   ),
                   tooltip: '筛选',
@@ -279,7 +282,15 @@ class _CardListPageState extends State<CardListPage> {
                   itemCount: filtered.length,
                   itemBuilder: (context, index) {
                     final card = filtered[index];
-                    return CardItem(card: card);
+                    return GestureDetector(
+                      onTap: () {
+                        print("左键点击：显示详情: ${card.cardName}");
+                      },
+                      onSecondaryTap: () {
+                        showCardDetailsDialog(context, card);
+                      },
+                      child: CardItem(card: card),
+                    );
                   },
                 );
               }
@@ -287,6 +298,62 @@ class _CardListPageState extends State<CardListPage> {
           ),
         ),
       ],
+    );
+  }
+
+  Future<dynamic> showCardDetailsDialog(BuildContext context, CardModel card) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(card.cardName),
+        content: SizedBox(
+          width: 750,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              cardImage(card),
+              const SizedBox(width: 8),
+              Expanded(
+                child: SizedBox(
+                  height: 300,
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (card.energy != null) Text("法力费用: ${card.energy}"),
+                          if (card.returnEnergy != null)
+                            Text("符能费用: ${card.returnEnergy}"),
+                          if (card.power != null) Text("战力: ${card.power}"),
+                          Text(
+                            "稀有度: ${card.rarityName}（${card.extendRarityName}）",
+                          ),
+                          Text("类别: ${card.cardCategoryName}"),
+                          const SizedBox(height: 8),
+                          Text(
+                            card.cardEffect,
+                            softWrap: true,
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text("关闭"),
+          ),
+        ],
+      ),
     );
   }
 }
