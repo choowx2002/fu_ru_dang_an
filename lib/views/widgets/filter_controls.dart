@@ -97,52 +97,57 @@ class FilterControlsWidget extends StatelessWidget {
           ),
 
           // 类型
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Wrap(
+            spacing: 20.0,
             children: [
-              const Text("类型", style: TextStyle(fontWeight: FontWeight.bold)),
-              DropdownButton<String>(
-                isDense: true,
-                focusColor: Colors.transparent,
-                value: selectedCategory,
-                hint: const Text("选择卡牌分类"),
-                items: categories.map((category) {
-                  return DropdownMenuItem<String>(
-                    value: category,
-                    child: Text(category),
-                  );
-                }).toList(),
-                onChanged: onCategoryChanged,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("类型", style: TextStyle(fontWeight: FontWeight.bold)),
+                  DropdownButton<String>(
+                    isDense: true,
+                    focusColor: Colors.transparent,
+                    value: selectedCategory,
+                    hint: const Text("选择卡牌分类"),
+                    items: categories.map((category) {
+                      return DropdownMenuItem<String>(
+                        value: category,
+                        child: Text(category),
+                      );
+                    }).toList(),
+                    onChanged: onCategoryChanged,
+                  ),
+                ],
               ),
-            ],
-          ),
-
-          // 稀有度
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text("稀有度", style: TextStyle(fontWeight: FontWeight.bold)),
-              DropdownButton<String>(
-                isDense: true,
-                focusColor: Colors.transparent,
-                value: selectedRarity,
-                hint: const Text("选择稀有度"),
-                items: rarities.map((rarity) {
-                  final iconPath = cardRarityIconMap[rarity];
-                  return DropdownMenuItem<String>(
-                    value: rarity,
-                    child: iconPath != null
-                        ? Row(
-                            children: [
-                              Image.asset(iconPath, width: 20, height: 20),
-                              const SizedBox(width: 8),
-                              Text(rarity),
-                            ],
-                          )
-                        : Text(rarity),
-                  );
-                }).toList(),
-                onChanged: onRarityChanged,
+              
+              // 稀有度
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("稀有度", style: TextStyle(fontWeight: FontWeight.bold)),
+                  DropdownButton<String>(
+                    isDense: true,
+                    focusColor: Colors.transparent,
+                    value: selectedRarity,
+                    hint: const Text("选择稀有度"),
+                    items: rarities.map((rarity) {
+                      final iconPath = cardRarityIconMap[rarity];
+                      return DropdownMenuItem<String>(
+                        value: rarity,
+                        child: iconPath != null
+                            ? Row(
+                                children: [
+                                  Image.asset(iconPath, width: 20, height: 20),
+                                  const SizedBox(width: 8),
+                                  Text(rarity),
+                                ],
+                              )
+                            : Text(rarity),
+                      );
+                    }).toList(),
+                    onChanged: onRarityChanged,
+                  ),
+                ],
               ),
             ],
           ),

@@ -271,7 +271,7 @@ class _CardListPageState extends State<CardListPage> {
                 return GridView.builder(
                   padding: const EdgeInsets.all(8),
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 150,
+                    maxCrossAxisExtent: 180,
                     mainAxisSpacing: 5,
                     crossAxisSpacing: 12,
                     childAspectRatio: 0.6,
