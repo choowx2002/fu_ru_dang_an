@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:fu_ru_dang_an/data/config/constant.dart';
 import 'package:fu_ru_dang_an/data/models/card_model.dart';
 import 'package:fu_ru_dang_an/views/widgets/card_item.dart';
 import 'package:fu_ru_dang_an/views/widgets/filter_controls.dart';
@@ -22,60 +23,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<CardModel> _allCards = [];
+  late Future<List<CardModel>> _futureCards;
   String _searchText = '';
   int count = 0;
   bool isFilter = false;
-  late Future<List<CardModel>> _futureCards;
   Set<String> selectedColors = {};
-
-  final Map<String, String> allColors = {
-    'red': "assets/icons/Fury.png",
-    'green': "assets/icons/Calm.png",
-    'blue': "assets/icons/Mind.png",
-    'orange': "assets/icons/Body.png",
-    'purple': "assets/icons/Chaos.png",
-    'yellow': "assets/icons/Order.png",
-  };
-
-  final Map<String, Color> colorBackgrounds = {
-    'red': Colors.red.shade200,
-    'green': Colors.green.shade200,
-    'blue': Colors.blue.shade200,
-    'orange': Colors.orange.shade200,
-    'purple': Colors.purple.shade200,
-    'yellow': Colors.yellow.shade200,
-  };
-
   String? selectedCardCategory = "全部";
   String? selectedRarity = "全部";
-
-  final List<String> cardCategories = [
-    '全部',
-    '传奇',
-    '专属法术',
-    '英雄单位',
-    '法术',
-    '装备',
-    '指示物单位',
-    '符文',
-    '单位',
-    '战场',
-  ];
-
-  final List<String> cardRarities = ['全部', '普通', '不凡', '稀有', '史诗', '异画'];
-
-  final Map<String, String?> cardRarityIconMap = {
-    '普通': "assets/icons/common.png",
-    '不凡': "assets/icons/uncommon.png",
-    '稀有': "assets/icons/rare.png",
-    '史诗': "assets/icons/epic.png",
-    '异画': "assets/icons/overnumbered.png",
-    '全部': null,
-  };
-
   RangeValues _energyRangeValues = const RangeValues(0, 12);
   RangeValues _returnEnergyRangeValues = const RangeValues(0, 4);
   RangeValues _powerRangeValues = const RangeValues(0, 12);
+  String sortBy = "id";
+  bool isAscOrder = true;
 
   @override
   void initState() {
@@ -86,38 +45,42 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // 搜索框
-              Expanded(
-                child: SearchBarWidget(
-                  onChanged: (value) {
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 500.0),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // 搜索框
+                Expanded(
+                  child: SearchBarWidget(
+                    onChanged: (value) {
+                      setState(() {
+                        _searchText = value.trim();
+                      });
+                    },
+                    query: _searchText,
+                  ),
+                ),
+                const SizedBox(width: 8.0),
+                // 筛选按钮
+                IconButton(
+                  onPressed: () {
                     setState(() {
-                      _searchText = value.trim();
+                      isFilter = !isFilter;
                     });
                   },
-                  query: _searchText,
+                  icon: Icon(
+                    isFilter ? Icons.filter_alt_sharp : Icons.filter_alt_outlined,
+                    size: 28.0,
+                  ),
+                  tooltip: '筛选',
                 ),
-              ),
-              const SizedBox(width: 8.0),
-              // 筛选按钮
-              IconButton(
-                onPressed: () {
-                  setState(() {
-                    isFilter = !isFilter;
-                  });
-                },
-                icon: Icon(
-                  isFilter ? Icons.filter_alt_sharp : Icons.filter_alt_outlined,
-                  size: 28.0,
-                ),
-                tooltip: '筛选',
-              ),
-            ],
+              ],
+            ),
           ),
         ),
 
@@ -165,7 +128,50 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text("搜索到$count张卡牌"), Text("搜索到$count张卡牌")],
+            children: [
+              Text("搜索到$count张卡牌"),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      padding: EdgeInsets.symmetric(horizontal: 5.0),
+                      focusColor: Colors.transparent,
+                      isDense: true,
+                      value: sortBy,
+                      hint: const Text("选择排序"),
+                      items: sortByOptions.map((e) {
+                        return DropdownMenuItem<String>(
+                          value: e.value,
+                          child: Text(e.label),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          sortBy = value!;
+                        });
+                      },
+                    ),
+                  ),
+                  IconButton(
+                    padding: const EdgeInsets.all(4),
+                    iconSize: 18.0,
+                    onPressed: () {
+                      setState(() {
+                        isAscOrder = !isAscOrder;
+                      });
+                    },
+                    icon: Icon(
+                      isAscOrder
+                          ? Icons.arrow_upward_sharp
+                          : Icons.arrow_downward_sharp,
+                    ),
+                    constraints: BoxConstraints(minWidth: 16, minHeight: 16),
+                    tooltip: isAscOrder ? "Ascending" : "Descending",
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
 
@@ -224,6 +230,35 @@ class _HomePageState extends State<HomePage> {
                       matchReturnEnergy &&
                       matchPower;
                 }).toList();
+
+                filtered.sort((a, b) {
+                  dynamic aValue;
+                  dynamic bValue;
+
+                  switch (sortBy) {
+                    case "id":
+                      aValue = a.cardNo;
+                      bValue = b.cardNo;
+                      break;
+                    case "energy":
+                      aValue = a.energy ?? 0;
+                      bValue = b.energy ?? 0;
+                      break;
+                    case "power":
+                      aValue = a.returnEnergy ?? 0;
+                      bValue = b.returnEnergy ?? 0;
+                      break;
+                    case "might":
+                      aValue = a.power ?? 0;
+                      bValue = b.power ?? 0;
+                  }
+
+                  if (isAscOrder) {
+                    return Comparable.compare(aValue, bValue);
+                  } else {
+                    return Comparable.compare(bValue, aValue);
+                  }
+                });
 
                 if (count != filtered.length) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {

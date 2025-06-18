@@ -14,7 +14,14 @@ const Map<String, String> cardRarityIconMap = {
 };
 
 // 颜色分类
-const List<String> cardColorOptions = ['red', 'green', 'blue', 'orange', 'purple', 'yellow'];
+const List<String> cardColorOptions = [
+  'red',
+  'green',
+  'blue',
+  'orange',
+  'purple',
+  'yellow',
+];
 
 /// 颜色图标路径
 const Map<String, String> cardColorIconMap = {
@@ -50,20 +57,34 @@ const List<String> cardCategoryOptions = [
   '战场',
 ];
 
-final energyConfig = RangeSliderModel(
+const energyConfig = RangeSliderModel(
   minMax: RangeValues(0, 12),
   defaultRange: RangeValues(0, 12),
   title: "法力费用",
 );
 
-final powerConfig = RangeSliderModel(
+const powerConfig = RangeSliderModel(
   minMax: RangeValues(0, 4),
   defaultRange: RangeValues(0, 4),
   title: "符能费用",
 );
 
-final mightConfig = RangeSliderModel(
+const mightConfig = RangeSliderModel(
   minMax: RangeValues(0, 12),
   defaultRange: RangeValues(0, 12),
   title: "战力",
 );
+
+class SortOption {
+  final String label;
+  final String value;
+
+  const SortOption({required this.label, required this.value});
+}
+
+final List<SortOption> sortByOptions = [
+  SortOption(label: "ID", value: "id"),
+  SortOption(label: "法力", value: "energy"),
+  SortOption(label: "符能", value: "power"),
+  SortOption(label: "战力", value: "might"),
+];

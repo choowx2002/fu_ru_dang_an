@@ -103,6 +103,7 @@ class FilterControlsWidget extends StatelessWidget {
               const Text("类型", style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton<String>(
                 isDense: true,
+                focusColor: Colors.transparent,
                 value: selectedCategory,
                 hint: const Text("选择卡牌分类"),
                 items: categories.map((category) {
@@ -123,6 +124,7 @@ class FilterControlsWidget extends StatelessWidget {
               const Text("稀有度", style: TextStyle(fontWeight: FontWeight.bold)),
               DropdownButton<String>(
                 isDense: true,
+                focusColor: Colors.transparent,
                 value: selectedRarity,
                 hint: const Text("选择稀有度"),
                 items: rarities.map((rarity) {
