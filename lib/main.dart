@@ -10,6 +10,7 @@ void main() {
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('符文构筑小工具');
     setWindowFrame(const Rect.fromLTWH(100, 100, 1024, 700));
+    setWindowMinSize(Size.fromWidth(800));
   }
   runApp(const MyApp());
 }
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: darkMode
                 ? ColorScheme.fromSeed(
-                    seedColor: Colors.lightBlue,
+                    seedColor: Colors.teal,
                     brightness: Brightness.dark,
                   )
                 : ColorScheme.fromSeed(
