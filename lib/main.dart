@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fu_ru_dang_an/data/notifiers.dart';
 import 'package:fu_ru_dang_an/views/widget_tree.dart';
 import 'package:window_size/window_size.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
+            fontFamily: 'NotoSansSC',
             colorScheme: darkMode
                 ? ColorScheme.fromSeed(
                     seedColor: Colors.teal,
