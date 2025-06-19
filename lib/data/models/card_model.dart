@@ -88,4 +88,36 @@ class CardModel {
       backImage: json['backImage'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'cardCategory': cardCategory,
+      'cardCategoryName': cardCategoryName,
+      'cardNo': cardNo,
+      'cardName': cardName,
+      'subTitle': subTitle,
+      'extendType': extendType,
+      'extendTypeName': extendTypeName,
+      'cardColorList': cardColorList,
+      'region': region,
+      'tag': tag,
+      'artist': artist,
+      'cardEffect': cardEffect,
+      'flavorText': flavorText,
+      'energy': energy,
+      'returnEnergy': returnEnergy,
+      'power': power,
+      'productCodeList': productCodeList,
+      'productNameList': productNameList,
+      'cardQaList': cardQaList,
+      'craftLevel': craftLevel,
+      'rarity': rarity,
+      'rarityName': rarityName,
+      'extendRarity': extendRarity,
+      'extendRarityName': extendRarityName,
+      'frontImage': frontImage,
+      'backImage': backImage,
+    };
+  }
 }

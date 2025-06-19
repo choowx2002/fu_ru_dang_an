@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fu_ru_dang_an/data/notifiers.dart';
+import 'package:fu_ru_dang_an/services/deck_builder_service.dart';
 import 'package:fu_ru_dang_an/views/widget_tree.dart';
 import 'package:window_size/window_size.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +15,13 @@ void main() {
     setWindowFrame(const Rect.fromLTWH(100, 100, 1024, 700));
     setWindowMinSize(Size.fromWidth(800));
   }
-  runApp(const MyApp());
+  
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => DeckBuilderService(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

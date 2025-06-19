@@ -4,10 +4,12 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:fu_ru_dang_an/data/config/constant.dart';
 import 'package:fu_ru_dang_an/data/models/card_model.dart';
+import 'package:fu_ru_dang_an/services/deck_builder_service.dart';
 import 'package:fu_ru_dang_an/views/widgets/card_image.dart';
 import 'package:fu_ru_dang_an/views/widgets/card_item.dart';
 import 'package:fu_ru_dang_an/views/widgets/filter_controls.dart';
 import 'package:fu_ru_dang_an/views/widgets/search_bar.dart';
+import 'package:provider/provider.dart';
 
 Future<List<CardModel>> loadCardsFromAsset() async {
   final jsonStr = await rootBundle.loadString('assets/data/cards.json');
@@ -36,6 +38,7 @@ class _CardListPageState extends State<CardListPage> {
   RangeValues _powerRangeValues = const RangeValues(0, 12);
   String sortBy = "id";
   bool isAscOrder = true;
+  final deckService = DeckBuilderService();
 
   @override
   void initState() {
@@ -284,7 +287,14 @@ class _CardListPageState extends State<CardListPage> {
                     final card = filtered[index];
                     return GestureDetector(
                       onTap: () {
-                        print("左键点击：显示详情: ${card.cardName}");
+                        final added = context.read<DeckBuilderService>().addCard(card);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: added
+                                ? Text("添加成功")
+                                : Text("添加失败：已达该类别上限或已存在"),
+                          ),
+                        );
                       },
                       onSecondaryTap: () {
                         showCardDetailsDialog(context, card);

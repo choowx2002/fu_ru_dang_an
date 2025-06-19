@@ -1,6 +1,6 @@
 [
     {
-        "id": 2413,
+        "id": 2926,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·001/298",
@@ -31,7 +31,7 @@
         "backImage": ""
     },
     {
-        "id": 2414,
+        "id": 2928,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·002/298",
@@ -62,7 +62,7 @@
         "backImage": ""
     },
     {
-        "id": 2416,
+        "id": 2930,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·003/298",
@@ -93,7 +93,7 @@
         "backImage": ""
     },
     {
-        "id": 2418,
+        "id": 2932,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·004/298",
@@ -124,7 +124,7 @@
         "backImage": ""
     },
     {
-        "id": 2420,
+        "id": 2934,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·005/298",
@@ -155,7 +155,7 @@
         "backImage": ""
     },
     {
-        "id": 2422,
+        "id": 2936,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·006/298",
@@ -186,7 +186,7 @@
         "backImage": ""
     },
     {
-        "id": 2424,
+        "id": 2938,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·007/298",
@@ -217,7 +217,7 @@
         "backImage": ""
     },
     {
-        "id": 2426,
+        "id": 2940,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·007a/298",
@@ -248,7 +248,7 @@
         "backImage": ""
     },
     {
-        "id": 2427,
+        "id": 2942,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·008/298",
@@ -279,7 +279,7 @@
         "backImage": ""
     },
     {
-        "id": 2429,
+        "id": 2944,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·010/298",
@@ -310,7 +310,7 @@
         "backImage": ""
     },
     {
-        "id": 2431,
+        "id": 2946,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·011/298",
@@ -341,7 +341,7 @@
         "backImage": ""
     },
     {
-        "id": 2433,
+        "id": 2949,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·012/298",
@@ -372,7 +372,7 @@
         "backImage": ""
     },
     {
-        "id": 2435,
+        "id": 2951,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·014/298",
@@ -403,7 +403,38 @@
         "backImage": ""
     },
     {
-        "id": 2437,
+        "id": 2952,
+        "cardCategory": "unit",
+        "cardCategoryName": "单位",
+        "cardNo": "OGN·015/298",
+        "cardName": "法荣队长",
+        "subTitle": "",
+        "extendType": null,
+        "extendTypeName": "",
+        "cardColorList": [
+            "red"
+        ],
+        "region": "诺克萨斯",
+        "tag": "崔法利",
+        "artist": "Six More Vodka",
+        "cardEffect": "此处的其他友方单位获得{{强攻}}。（如果他们是进攻方，则{{S}}+1。）",
+        "flavorText": "“前进！永不停歇！”",
+        "energy": 4,
+        "returnEnergy": 1,
+        "power": 5,
+        "productCodeList": [],
+        "productNameList": [],
+        "cardQaList": null,
+        "craftLevel": 0,
+        "rarity": "rune_glimmer",
+        "rarityName": "不凡",
+        "extendRarity": "base_inscript",
+        "extendRarityName": "平卡",
+        "frontImage": "https://cdn.playloltcg.com//lol/card/20250619/405ee7286b2241eb92cbddd3db3a1274.png",
+        "backImage": ""
+    },
+    {
+        "id": 2954,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·016/298",
@@ -434,7 +465,7 @@
         "backImage": ""
     },
     {
-        "id": 2439,
+        "id": 2956,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·020/298",
@@ -465,7 +496,7 @@
         "backImage": ""
     },
     {
-        "id": 2440,
+        "id": 2958,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·024/298",
@@ -496,7 +527,7 @@
         "backImage": ""
     },
     {
-        "id": 2442,
+        "id": 2960,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·027/298",
@@ -527,7 +558,7 @@
         "backImage": ""
     },
     {
-        "id": 2444,
+        "id": 2962,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·027a/298",
@@ -558,7 +589,38 @@
         "backImage": ""
     },
     {
-        "id": 2446,
+        "id": 2963,
+        "cardCategory": "hero_unit",
+        "cardCategoryName": "英雄单位",
+        "cardNo": "OGN·028/298",
+        "cardName": "德莱文",
+        "subTitle": "夸耀角斗士",
+        "extendType": null,
+        "extendTypeName": "",
+        "cardColorList": [
+            "red"
+        ],
+        "region": "诺克萨斯",
+        "tag": "",
+        "artist": "Six More Vodka",
+        "cardEffect": "把你的分数加到我的战力上。",
+        "flavorText": "“咱们来多称赞我几句吧。”",
+        "energy": 5,
+        "returnEnergy": 1,
+        "power": 3,
+        "productCodeList": [],
+        "productNameList": [],
+        "cardQaList": null,
+        "craftLevel": 0,
+        "rarity": "rune_shard",
+        "rarityName": "稀有",
+        "extendRarity": "base_inscript",
+        "extendRarityName": "平卡",
+        "frontImage": "https://cdn.playloltcg.com//lol/card/20250619/86aa272baaae45869c4452c3978acdaa.png",
+        "backImage": ""
+    },
+    {
+        "id": 2965,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·030/298",
@@ -589,7 +651,7 @@
         "backImage": ""
     },
     {
-        "id": 2448,
+        "id": 2967,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·030a/298",
@@ -620,7 +682,7 @@
         "backImage": ""
     },
     {
-        "id": 2450,
+        "id": 2969,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·034/298",
@@ -651,7 +713,38 @@
         "backImage": ""
     },
     {
-        "id": 2452,
+        "id": 2971,
+        "cardCategory": "hero_unit",
+        "cardCategoryName": "英雄单位",
+        "cardNo": "OGN·035/298",
+        "cardName": "薇恩",
+        "subTitle": "追猎者",
+        "extendType": null,
+        "extendTypeName": "",
+        "cardColorList": [
+            "red"
+        ],
+        "region": "德玛西亚",
+        "tag": "",
+        "artist": "Kudos Productions",
+        "cardEffect": "{{强攻3}}（如果我是进攻方，则{{S}}+3。）\n如果对手已控制任意战场，则我以活跃状态进场。每当我征服一处战场时，你可以选择支付{{1}}来让我返回所属的手牌。",
+        "flavorText": "“趁黑出动。”",
+        "energy": 4,
+        "returnEnergy": 1,
+        "power": 2,
+        "productCodeList": [],
+        "productNameList": [],
+        "cardQaList": null,
+        "craftLevel": 0,
+        "rarity": "rune_shard",
+        "rarityName": "稀有",
+        "extendRarity": "base_inscript",
+        "extendRarityName": "平卡",
+        "frontImage": "https://cdn.playloltcg.com//lol/card/20250619/7e52e6bbab7043ddb2fd65973ce40beb.png",
+        "backImage": ""
+    },
+    {
+        "id": 2973,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·036/298",
@@ -682,7 +775,7 @@
         "backImage": ""
     },
     {
-        "id": 2453,
+        "id": 2974,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·037/298",
@@ -705,7 +798,7 @@
         "productNameList": [],
         "cardQaList": null,
         "craftLevel": 0,
-        "rarity": "rune_shard",
+        "rarity": "rune_core",
         "rarityName": "史诗",
         "extendRarity": "base_inscript",
         "extendRarityName": "平卡",
@@ -713,7 +806,7 @@
         "backImage": ""
     },
     {
-        "id": 2455,
+        "id": 2976,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·038/298",
@@ -744,7 +837,7 @@
         "backImage": ""
     },
     {
-        "id": 2457,
+        "id": 2979,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·040/298",
@@ -775,7 +868,7 @@
         "backImage": ""
     },
     {
-        "id": 2459,
+        "id": 2981,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·041/298",
@@ -806,7 +899,7 @@
         "backImage": ""
     },
     {
-        "id": 2460,
+        "id": 2982,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·041a/298",
@@ -837,7 +930,7 @@
         "backImage": ""
     },
     {
-        "id": 2462,
+        "id": 2984,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·042/298",
@@ -868,7 +961,7 @@
         "backImage": ""
     },
     {
-        "id": 2464,
+        "id": 2986,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·042a/298",
@@ -899,7 +992,7 @@
         "backImage": ""
     },
     {
-        "id": 2466,
+        "id": 2988,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·043/298",
@@ -930,7 +1023,7 @@
         "backImage": ""
     },
     {
-        "id": 2468,
+        "id": 2991,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·044/298",
@@ -961,7 +1054,7 @@
         "backImage": ""
     },
     {
-        "id": 2470,
+        "id": 2992,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·045/298",
@@ -992,7 +1085,7 @@
         "backImage": ""
     },
     {
-        "id": 2472,
+        "id": 2995,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·046/298",
@@ -1023,7 +1116,7 @@
         "backImage": ""
     },
     {
-        "id": 2474,
+        "id": 2997,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·048/298",
@@ -1054,7 +1147,7 @@
         "backImage": ""
     },
     {
-        "id": 2476,
+        "id": 2999,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·053/298",
@@ -1085,7 +1178,7 @@
         "backImage": ""
     },
     {
-        "id": 2478,
+        "id": 3001,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·055/298",
@@ -1116,7 +1209,7 @@
         "backImage": ""
     },
     {
-        "id": 2480,
+        "id": 3003,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·056/298",
@@ -1147,7 +1240,7 @@
         "backImage": ""
     },
     {
-        "id": 2481,
+        "id": 3005,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·057/298",
@@ -1178,7 +1271,7 @@
         "backImage": ""
     },
     {
-        "id": 2483,
+        "id": 3007,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·058/298",
@@ -1209,7 +1302,7 @@
         "backImage": ""
     },
     {
-        "id": 2485,
+        "id": 3009,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·059/298",
@@ -1240,7 +1333,7 @@
         "backImage": ""
     },
     {
-        "id": 2487,
+        "id": 3011,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·063/298",
@@ -1271,7 +1364,7 @@
         "backImage": ""
     },
     {
-        "id": 2489,
+        "id": 3013,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·064/298",
@@ -1302,7 +1395,7 @@
         "backImage": ""
     },
     {
-        "id": 2491,
+        "id": 3015,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·066/298",
@@ -1333,7 +1426,7 @@
         "backImage": ""
     },
     {
-        "id": 2493,
+        "id": 3017,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·066a/298",
@@ -1364,7 +1457,7 @@
         "backImage": ""
     },
     {
-        "id": 2494,
+        "id": 3018,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·068/298",
@@ -1395,7 +1488,7 @@
         "backImage": ""
     },
     {
-        "id": 2496,
+        "id": 3020,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·073/298",
@@ -1426,7 +1519,7 @@
         "backImage": ""
     },
     {
-        "id": 2498,
+        "id": 3022,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·076/298",
@@ -1457,7 +1550,7 @@
         "backImage": ""
     },
     {
-        "id": 2500,
+        "id": 3024,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·076a/298",
@@ -1488,7 +1581,7 @@
         "backImage": ""
     },
     {
-        "id": 2502,
+        "id": 3026,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·077/298",
@@ -1519,7 +1612,7 @@
         "backImage": ""
     },
     {
-        "id": 2504,
+        "id": 3028,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·078/298",
@@ -1550,7 +1643,7 @@
         "backImage": ""
     },
     {
-        "id": 2506,
+        "id": 3030,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·078a/298",
@@ -1581,7 +1674,7 @@
         "backImage": ""
     },
     {
-        "id": 2508,
+        "id": 3032,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·081/298",
@@ -1612,7 +1705,7 @@
         "backImage": ""
     },
     {
-        "id": 2509,
+        "id": 3034,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·082/298",
@@ -1643,7 +1736,7 @@
         "backImage": ""
     },
     {
-        "id": 2511,
+        "id": 3036,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·084/298",
@@ -1674,7 +1767,7 @@
         "backImage": ""
     },
     {
-        "id": 2513,
+        "id": 3038,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·089/298",
@@ -1705,7 +1798,7 @@
         "backImage": ""
     },
     {
-        "id": 2515,
+        "id": 3040,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·089a/298",
@@ -1736,7 +1829,7 @@
         "backImage": ""
     },
     {
-        "id": 2517,
+        "id": 3042,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·094/298",
@@ -1767,7 +1860,7 @@
         "backImage": ""
     },
     {
-        "id": 2519,
+        "id": 3044,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·095/298",
@@ -1798,7 +1891,7 @@
         "backImage": ""
     },
     {
-        "id": 2521,
+        "id": 3046,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·096/298",
@@ -1829,7 +1922,7 @@
         "backImage": ""
     },
     {
-        "id": 2523,
+        "id": 3048,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·097/298",
@@ -1860,7 +1953,7 @@
         "backImage": ""
     },
     {
-        "id": 2525,
+        "id": 3050,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·099/298",
@@ -1891,7 +1984,7 @@
         "backImage": ""
     },
     {
-        "id": 2526,
+        "id": 3051,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·100/298",
@@ -1922,7 +2015,7 @@
         "backImage": ""
     },
     {
-        "id": 2528,
+        "id": 3053,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·101/298",
@@ -1953,7 +2046,7 @@
         "backImage": ""
     },
     {
-        "id": 2530,
+        "id": 3055,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·103/298",
@@ -1984,7 +2077,7 @@
         "backImage": ""
     },
     {
-        "id": 2532,
+        "id": 3057,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·110/298",
@@ -2015,7 +2108,7 @@
         "backImage": ""
     },
     {
-        "id": 2534,
+        "id": 3059,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·111/298",
@@ -2046,7 +2139,7 @@
         "backImage": ""
     },
     {
-        "id": 2536,
+        "id": 3061,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·112/298",
@@ -2077,7 +2170,7 @@
         "backImage": ""
     },
     {
-        "id": 2538,
+        "id": 3064,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·112a/298",
@@ -2108,7 +2201,7 @@
         "backImage": ""
     },
     {
-        "id": 2540,
+        "id": 3068,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·115/298",
@@ -2139,7 +2232,7 @@
         "backImage": ""
     },
     {
-        "id": 2542,
+        "id": 3070,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·118/298",
@@ -2170,7 +2263,7 @@
         "backImage": ""
     },
     {
-        "id": 2545,
+        "id": 3072,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·120/298",
@@ -2201,7 +2294,7 @@
         "backImage": ""
     },
     {
-        "id": 2547,
+        "id": 3074,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·123/298",
@@ -2232,7 +2325,7 @@
         "backImage": ""
     },
     {
-        "id": 2549,
+        "id": 3076,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·124/298",
@@ -2263,7 +2356,38 @@
         "backImage": ""
     },
     {
-        "id": 2551,
+        "id": 3077,
+        "cardCategory": "unit",
+        "cardCategoryName": "单位",
+        "cardNo": "OGN·125/298",
+        "cardName": "比尔吉沃特恶霸",
+        "subTitle": "",
+        "extendType": null,
+        "extendTypeName": "",
+        "cardColorList": [
+            "orange"
+        ],
+        "region": "比尔吉沃特",
+        "tag": "",
+        "artist": "Envar Studio",
+        "cardEffect": "如果我拥有增益，则我获得{{游走}}。（我可以向其他战场进行移动。）",
+        "flavorText": "还有地方要去，还有人要抓。",
+        "energy": 6,
+        "returnEnergy": null,
+        "power": 6,
+        "productCodeList": [],
+        "productNameList": [],
+        "cardQaList": null,
+        "craftLevel": 0,
+        "rarity": "rune_dust",
+        "rarityName": "普通",
+        "extendRarity": "base_inscript",
+        "extendRarityName": "平卡",
+        "frontImage": "https://cdn.playloltcg.com//lol/card/20250619/15cd98d3929b4c449515b106c0ab72ee.png",
+        "backImage": ""
+    },
+    {
+        "id": 3079,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·126/298",
@@ -2294,7 +2418,7 @@
         "backImage": ""
     },
     {
-        "id": 2553,
+        "id": 3081,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·126a/298",
@@ -2325,7 +2449,7 @@
         "backImage": ""
     },
     {
-        "id": 2555,
+        "id": 3082,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·128/298",
@@ -2356,7 +2480,7 @@
         "backImage": ""
     },
     {
-        "id": 2557,
+        "id": 3083,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·132/298",
@@ -2387,7 +2511,7 @@
         "backImage": ""
     },
     {
-        "id": 2558,
+        "id": 3084,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·134/298",
@@ -2418,7 +2542,7 @@
         "backImage": ""
     },
     {
-        "id": 2559,
+        "id": 3085,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·137/298",
@@ -2449,7 +2573,7 @@
         "backImage": ""
     },
     {
-        "id": 2560,
+        "id": 3086,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·138/298",
@@ -2480,7 +2604,7 @@
         "backImage": ""
     },
     {
-        "id": 2561,
+        "id": 3087,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·139/298",
@@ -2511,7 +2635,7 @@
         "backImage": ""
     },
     {
-        "id": 2562,
+        "id": 3088,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·140/298",
@@ -2542,7 +2666,7 @@
         "backImage": ""
     },
     {
-        "id": 2563,
+        "id": 3089,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·147/298",
@@ -2573,7 +2697,7 @@
         "backImage": ""
     },
     {
-        "id": 2564,
+        "id": 3090,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·148/298",
@@ -2604,7 +2728,7 @@
         "backImage": ""
     },
     {
-        "id": 2565,
+        "id": 3091,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·149/298",
@@ -2635,7 +2759,7 @@
         "backImage": ""
     },
     {
-        "id": 2566,
+        "id": 3092,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·158/298",
@@ -2666,7 +2790,7 @@
         "backImage": ""
     },
     {
-        "id": 2567,
+        "id": 3093,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·158a/298",
@@ -2697,7 +2821,7 @@
         "backImage": ""
     },
     {
-        "id": 2568,
+        "id": 3094,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·159/298",
@@ -2728,7 +2852,7 @@
         "backImage": ""
     },
     {
-        "id": 2569,
+        "id": 3095,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·161/298",
@@ -2759,7 +2883,7 @@
         "backImage": ""
     },
     {
-        "id": 2570,
+        "id": 3096,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·162/298",
@@ -2790,7 +2914,7 @@
         "backImage": ""
     },
     {
-        "id": 2571,
+        "id": 3097,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·162a/298",
@@ -2821,7 +2945,7 @@
         "backImage": ""
     },
     {
-        "id": 2572,
+        "id": 3098,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·163/298",
@@ -2852,7 +2976,7 @@
         "backImage": ""
     },
     {
-        "id": 2573,
+        "id": 3099,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·165/298",
@@ -2883,7 +3007,7 @@
         "backImage": ""
     },
     {
-        "id": 2574,
+        "id": 3100,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·166/298",
@@ -2914,7 +3038,7 @@
         "backImage": ""
     },
     {
-        "id": 2575,
+        "id": 3101,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·166a/298",
@@ -2945,7 +3069,7 @@
         "backImage": ""
     },
     {
-        "id": 2576,
+        "id": 3102,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·169/298",
@@ -2976,7 +3100,7 @@
         "backImage": ""
     },
     {
-        "id": 2577,
+        "id": 2925,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·172/298",
@@ -3007,7 +3131,7 @@
         "backImage": ""
     },
     {
-        "id": 2578,
+        "id": 2927,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·177/298",
@@ -3038,7 +3162,7 @@
         "backImage": ""
     },
     {
-        "id": 2579,
+        "id": 2929,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·178/298",
@@ -3069,7 +3193,7 @@
         "backImage": ""
     },
     {
-        "id": 2580,
+        "id": 2931,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·179/298",
@@ -3100,7 +3224,7 @@
         "backImage": ""
     },
     {
-        "id": 2412,
+        "id": 2933,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·181/298",
@@ -3131,7 +3255,7 @@
         "backImage": ""
     },
     {
-        "id": 2415,
+        "id": 2935,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·185/298",
@@ -3162,7 +3286,7 @@
         "backImage": ""
     },
     {
-        "id": 2417,
+        "id": 2937,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·187/298",
@@ -3193,7 +3317,7 @@
         "backImage": ""
     },
     {
-        "id": 2419,
+        "id": 2939,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·189/298",
@@ -3224,7 +3348,7 @@
         "backImage": ""
     },
     {
-        "id": 2421,
+        "id": 2941,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·191/298",
@@ -3255,7 +3379,7 @@
         "backImage": ""
     },
     {
-        "id": 2423,
+        "id": 2943,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·193/298",
@@ -3286,7 +3410,7 @@
         "backImage": ""
     },
     {
-        "id": 2425,
+        "id": 2945,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·193a/298",
@@ -3317,7 +3441,7 @@
         "backImage": ""
     },
     {
-        "id": 2428,
+        "id": 2947,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·197/298",
@@ -3348,7 +3472,7 @@
         "backImage": ""
     },
     {
-        "id": 2430,
+        "id": 2948,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·197a/298",
@@ -3379,7 +3503,38 @@
         "backImage": ""
     },
     {
-        "id": 2432,
+        "id": 2950,
+        "cardCategory": "spell",
+        "cardCategoryName": "法术",
+        "cardNo": "OGN·201/298",
+        "cardName": "反转时间线",
+        "subTitle": "",
+        "extendType": null,
+        "extendTypeName": "",
+        "cardColorList": [
+            "purple"
+        ],
+        "region": "",
+        "tag": "",
+        "artist": "Kudos Productions",
+        "cardEffect": "每名玩家弃置自己的所有手牌，然后抽四张牌。",
+        "flavorText": "“该去大闹一场咯！”\n——艾克",
+        "energy": 3,
+        "returnEnergy": 1,
+        "power": null,
+        "productCodeList": [],
+        "productNameList": [],
+        "cardQaList": null,
+        "craftLevel": 0,
+        "rarity": "rune_core",
+        "rarityName": "史诗",
+        "extendRarity": "base_inscript",
+        "extendRarityName": "平卡",
+        "frontImage": "https://cdn.playloltcg.com//lol/card/20250619/b11f4e185f544ff69991d3afd27e7098.png",
+        "backImage": ""
+    },
+    {
+        "id": 2953,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·202/298",
@@ -3410,7 +3565,7 @@
         "backImage": ""
     },
     {
-        "id": 2434,
+        "id": 2955,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·202a/298",
@@ -3441,7 +3596,7 @@
         "backImage": ""
     },
     {
-        "id": 2436,
+        "id": 2957,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·203/298",
@@ -3472,7 +3627,7 @@
         "backImage": ""
     },
     {
-        "id": 2438,
+        "id": 2959,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·204/298",
@@ -3503,7 +3658,38 @@
         "backImage": ""
     },
     {
-        "id": 2441,
+        "id": 2961,
+        "cardCategory": "spell",
+        "cardCategoryName": "法术",
+        "cardNo": "OGN·207/298",
+        "cardName": "荣耀召唤",
+        "subTitle": "",
+        "extendType": null,
+        "extendTypeName": "",
+        "cardColorList": [
+            "yellow"
+        ],
+        "region": "",
+        "tag": "",
+        "artist": "Kudos Productions",
+        "cardEffect": "{{反应}}（可在任意时机打出，甚至先于其他法术和技能的结算。）\n打出此牌时，你可以选择消耗一个增益作为额外费用，以此无视本法术的费用。让一名单位本回合内{{S}}+3。",
+        "flavorText": "",
+        "energy": 3,
+        "returnEnergy": null,
+        "power": null,
+        "productCodeList": [],
+        "productNameList": [],
+        "cardQaList": null,
+        "craftLevel": 0,
+        "rarity": "rune_dust",
+        "rarityName": "普通",
+        "extendRarity": "base_inscript",
+        "extendRarityName": "平卡",
+        "frontImage": "https://cdn.playloltcg.com//lol/card/20250619/2931ea577bdb491db67f17d3a654e763.png",
+        "backImage": ""
+    },
+    {
+        "id": 2964,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·208/298",
@@ -3534,7 +3720,7 @@
         "backImage": ""
     },
     {
-        "id": 2443,
+        "id": 2966,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·209/298",
@@ -3565,7 +3751,7 @@
         "backImage": ""
     },
     {
-        "id": 2445,
+        "id": 2968,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·211/298",
@@ -3596,7 +3782,7 @@
         "backImage": ""
     },
     {
-        "id": 2447,
+        "id": 2970,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·213/298",
@@ -3627,7 +3813,7 @@
         "backImage": ""
     },
     {
-        "id": 2449,
+        "id": 2972,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·214/298",
@@ -3658,7 +3844,7 @@
         "backImage": ""
     },
     {
-        "id": 2451,
+        "id": 2975,
         "cardCategory": "rune",
         "cardCategoryName": "符文",
         "cardNo": "OGN·214a/298",
@@ -3689,7 +3875,7 @@
         "backImage": ""
     },
     {
-        "id": 2454,
+        "id": 2977,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·216/298",
@@ -3720,7 +3906,7 @@
         "backImage": ""
     },
     {
-        "id": 2456,
+        "id": 2978,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·218/298",
@@ -3751,7 +3937,7 @@
         "backImage": ""
     },
     {
-        "id": 2458,
+        "id": 2980,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·225/298",
@@ -3782,7 +3968,7 @@
         "backImage": ""
     },
     {
-        "id": 2461,
+        "id": 2983,
         "cardCategory": "spell",
         "cardCategoryName": "法术",
         "cardNo": "OGN·233/298",
@@ -3813,7 +3999,7 @@
         "backImage": ""
     },
     {
-        "id": 2463,
+        "id": 2985,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·234/298",
@@ -3844,7 +4030,7 @@
         "backImage": ""
     },
     {
-        "id": 2465,
+        "id": 2987,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·238/298",
@@ -3875,7 +4061,7 @@
         "backImage": ""
     },
     {
-        "id": 2467,
+        "id": 2989,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·238a/298",
@@ -3906,7 +4092,7 @@
         "backImage": ""
     },
     {
-        "id": 2469,
+        "id": 2990,
         "cardCategory": "unit",
         "cardCategoryName": "单位",
         "cardNo": "OGN·239/298",
@@ -3937,7 +4123,7 @@
         "backImage": ""
     },
     {
-        "id": 2471,
+        "id": 2993,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·240/298",
@@ -3968,7 +4154,7 @@
         "backImage": ""
     },
     {
-        "id": 2473,
+        "id": 2994,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·240a/298",
@@ -3999,7 +4185,7 @@
         "backImage": ""
     },
     {
-        "id": 2475,
+        "id": 2996,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·241/298",
@@ -4030,7 +4216,7 @@
         "backImage": ""
     },
     {
-        "id": 2477,
+        "id": 2998,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·243/298",
@@ -4061,7 +4247,7 @@
         "backImage": ""
     },
     {
-        "id": 2479,
+        "id": 3000,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·243a/299",
@@ -4092,7 +4278,7 @@
         "backImage": ""
     },
     {
-        "id": 2482,
+        "id": 3002,
         "cardCategory": "equipment",
         "cardCategoryName": "装备",
         "cardNo": "OGN·245/298",
@@ -4123,7 +4309,7 @@
         "backImage": ""
     },
     {
-        "id": 2484,
+        "id": 3004,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·246/298",
@@ -4154,7 +4340,7 @@
         "backImage": ""
     },
     {
-        "id": 2486,
+        "id": 3006,
         "cardCategory": "hero_unit",
         "cardCategoryName": "英雄单位",
         "cardNo": "OGN·246a/298",
@@ -4185,7 +4371,7 @@
         "backImage": ""
     },
     {
-        "id": 2488,
+        "id": 3008,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·247/298",
@@ -4217,7 +4403,7 @@
         "backImage": ""
     },
     {
-        "id": 2490,
+        "id": 3010,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·248/298",
@@ -4249,7 +4435,7 @@
         "backImage": ""
     },
     {
-        "id": 2492,
+        "id": 3012,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·249/298",
@@ -4281,7 +4467,7 @@
         "backImage": ""
     },
     {
-        "id": 2495,
+        "id": 3014,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·250/298",
@@ -4313,7 +4499,7 @@
         "backImage": ""
     },
     {
-        "id": 2497,
+        "id": 3016,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·251/298",
@@ -4345,7 +4531,7 @@
         "backImage": ""
     },
     {
-        "id": 2499,
+        "id": 3019,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·252/298",
@@ -4377,7 +4563,7 @@
         "backImage": ""
     },
     {
-        "id": 2501,
+        "id": 3021,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·253/298",
@@ -4409,7 +4595,7 @@
         "backImage": ""
     },
     {
-        "id": 2503,
+        "id": 3023,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·254/298",
@@ -4441,7 +4627,7 @@
         "backImage": ""
     },
     {
-        "id": 2505,
+        "id": 3025,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·255/298",
@@ -4473,7 +4659,7 @@
         "backImage": ""
     },
     {
-        "id": 2507,
+        "id": 3027,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·256/298",
@@ -4505,7 +4691,7 @@
         "backImage": ""
     },
     {
-        "id": 2510,
+        "id": 3029,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·257/298",
@@ -4537,7 +4723,7 @@
         "backImage": ""
     },
     {
-        "id": 2512,
+        "id": 3031,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·258/298",
@@ -4569,7 +4755,7 @@
         "backImage": ""
     },
     {
-        "id": 2514,
+        "id": 3033,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·259/298",
@@ -4601,7 +4787,7 @@
         "backImage": ""
     },
     {
-        "id": 2516,
+        "id": 3035,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·260/298",
@@ -4633,7 +4819,7 @@
         "backImage": ""
     },
     {
-        "id": 2518,
+        "id": 3037,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·261/298",
@@ -4665,7 +4851,7 @@
         "backImage": ""
     },
     {
-        "id": 2520,
+        "id": 3039,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·262/298",
@@ -4697,7 +4883,7 @@
         "backImage": ""
     },
     {
-        "id": 2522,
+        "id": 3041,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·263/298",
@@ -4729,7 +4915,7 @@
         "backImage": ""
     },
     {
-        "id": 2524,
+        "id": 3043,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·264/298",
@@ -4761,7 +4947,7 @@
         "backImage": ""
     },
     {
-        "id": 2527,
+        "id": 3045,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·265/298",
@@ -4793,7 +4979,7 @@
         "backImage": ""
     },
     {
-        "id": 2529,
+        "id": 3047,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·266/298",
@@ -4825,7 +5011,7 @@
         "backImage": ""
     },
     {
-        "id": 2531,
+        "id": 3049,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·267/298",
@@ -4857,7 +5043,7 @@
         "backImage": ""
     },
     {
-        "id": 2533,
+        "id": 3052,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·268/298",
@@ -4889,7 +5075,7 @@
         "backImage": ""
     },
     {
-        "id": 2535,
+        "id": 3054,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·269/298",
@@ -4921,7 +5107,7 @@
         "backImage": ""
     },
     {
-        "id": 2537,
+        "id": 3056,
         "cardCategory": "exclusive_spell",
         "cardCategoryName": "专属法术",
         "cardNo": "OGN·270/298",
@@ -4953,7 +5139,7 @@
         "backImage": ""
     },
     {
-        "id": 2539,
+        "id": 3058,
         "cardCategory": "indicator_unit",
         "cardCategoryName": "指示物单位",
         "cardNo": "OGN·273/298",
@@ -4984,7 +5170,7 @@
         "backImage": ""
     },
     {
-        "id": 2541,
+        "id": 3060,
         "cardCategory": "battlefield",
         "cardCategoryName": "战场",
         "cardNo": "OGN·275/298",
@@ -5015,7 +5201,7 @@
         "backImage": ""
     },
     {
-        "id": 2543,
+        "id": 3062,
         "cardCategory": "battlefield",
         "cardCategoryName": "战场",
         "cardNo": "OGN·276/298",
@@ -5046,7 +5232,7 @@
         "backImage": ""
     },
     {
-        "id": 2544,
+        "id": 3063,
         "cardCategory": "battlefield",
         "cardCategoryName": "战场",
         "cardNo": "OGN·277/298",
@@ -5077,7 +5263,100 @@
         "backImage": ""
     },
     {
-        "id": 2546,
+        "id": 3065,
+        "cardCategory": "battlefield",
+        "cardCategoryName": "战场",
+        "cardNo": "OGN·278/298",
+        "cardName": "班德尔树",
+        "subTitle": "",
+        "extendType": null,
+        "extendTypeName": "",
+        "cardColorList": [
+            "colorless"
+        ],
+        "region": "",
+        "tag": "",
+        "artist": "Kudos Productions",
+        "cardEffect": "你可以选择在此处额外布置一张{{待命}}卡牌。",
+        "flavorText": "",
+        "energy": null,
+        "returnEnergy": null,
+        "power": null,
+        "productCodeList": [],
+        "productNameList": [],
+        "cardQaList": null,
+        "craftLevel": 0,
+        "rarity": "rune_glimmer",
+        "rarityName": "不凡",
+        "extendRarity": "base_inscript",
+        "extendRarityName": "平卡",
+        "frontImage": "https://cdn.playloltcg.com//lol/card/20250619/5860e99c964f4b41a058d6976136bc87.png",
+        "backImage": ""
+    },
+    {
+        "id": 3066,
+        "cardCategory": "battlefield",
+        "cardCategoryName": "战场",
+        "cardNo": "OGN·284/298",
+        "cardName": "力量方尖碑",
+        "subTitle": "",
+        "extendType": null,
+        "extendTypeName": "",
+        "cardColorList": [
+            "colorless"
+        ],
+        "region": "",
+        "tag": "",
+        "artist": "Chris Kintner",
+        "cardEffect": "每名玩家在各自的第一个回合开始阶段，额外召出一枚符文。",
+        "flavorText": "",
+        "energy": null,
+        "returnEnergy": null,
+        "power": null,
+        "productCodeList": [],
+        "productNameList": [],
+        "cardQaList": null,
+        "craftLevel": 0,
+        "rarity": "rune_glimmer",
+        "rarityName": "不凡",
+        "extendRarity": "base_inscript",
+        "extendRarityName": "平卡",
+        "frontImage": "https://cdn.playloltcg.com//lol/card/20250619/b3c0f48b7da8484d87deff280a0ebb8e.png",
+        "backImage": ""
+    },
+    {
+        "id": 3067,
+        "cardCategory": "battlefield",
+        "cardCategoryName": "战场",
+        "cardNo": "OGN·290/298",
+        "cardName": "荣耀竞技场",
+        "subTitle": "",
+        "extendType": null,
+        "extendTypeName": "",
+        "cardColorList": [
+            "colorless"
+        ],
+        "region": "",
+        "tag": "",
+        "artist": "Envar Studio",
+        "cardEffect": "每名玩家在各自的第一个回合开始阶段，获得1分。",
+        "flavorText": "",
+        "energy": null,
+        "returnEnergy": null,
+        "power": null,
+        "productCodeList": [],
+        "productNameList": [],
+        "cardQaList": null,
+        "craftLevel": 0,
+        "rarity": "rune_glimmer",
+        "rarityName": "不凡",
+        "extendRarity": "base_inscript",
+        "extendRarityName": "平卡",
+        "frontImage": "https://cdn.playloltcg.com//lol/card/20250619/7bae1ddfb799449db219a8056c043e6f.png",
+        "backImage": ""
+    },
+    {
+        "id": 3069,
         "cardCategory": "battlefield",
         "cardCategoryName": "战场",
         "cardNo": "OGN·297/298",
@@ -5108,7 +5387,7 @@
         "backImage": ""
     },
     {
-        "id": 2548,
+        "id": 3071,
         "cardCategory": "battlefield",
         "cardCategoryName": "战场",
         "cardNo": "OGN·298/298",
@@ -5139,7 +5418,7 @@
         "backImage": ""
     },
     {
-        "id": 2550,
+        "id": 3073,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·300/298",
@@ -5171,7 +5450,7 @@
         "backImage": ""
     },
     {
-        "id": 2552,
+        "id": 3075,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·300*/298",
@@ -5203,7 +5482,7 @@
         "backImage": ""
     },
     {
-        "id": 2554,
+        "id": 3078,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·305/298",
@@ -5235,7 +5514,7 @@
         "backImage": ""
     },
     {
-        "id": 2556,
+        "id": 3080,
         "cardCategory": "legendary",
         "cardCategoryName": "传奇",
         "cardNo": "OGN·305*/298",
