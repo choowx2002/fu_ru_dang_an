@@ -10,7 +10,7 @@ class ResizablePanel extends StatefulWidget {
 }
 
 class _ResizablePanelState extends State<ResizablePanel> {
-  bool showDeckBuilder = true;
+  bool showCardList = true;
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +18,20 @@ class _ResizablePanelState extends State<ResizablePanel> {
       builder: (context, constraints) {
         return Row(
           children: [
+
+            // 构筑区
             Expanded(
-              child: CardListPage(), // 左侧卡牌浏览
+              child: DeckBuilderPanel(),
             ),
+
+            // 分割线
             Center(
               child: Tooltip(
-                message: showDeckBuilder ? "隐藏卡组构筑器" : "展开卡组构筑器",
+                message: showCardList ? "隐藏" : "展开",
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      showDeckBuilder = !showDeckBuilder;
+                      showCardList = !showCardList;
                     });
                   },
                   child: Container(
@@ -37,14 +41,16 @@ class _ResizablePanelState extends State<ResizablePanel> {
                       color: Theme.of(context).colorScheme.primary,
                     ),
                     child: Icon(
-                      showDeckBuilder ? Icons.arrow_right : Icons.arrow_left,
+                      showCardList ? Icons.arrow_right : Icons.arrow_left,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                 ),
               ),
             ),
-            if (showDeckBuilder)
+
+            // 搜索区
+            if (showCardList)
               Container(
                 decoration: BoxDecoration(
                   border: Border(
@@ -53,8 +59,8 @@ class _ResizablePanelState extends State<ResizablePanel> {
                     ),
                   ),
                 ),
-                width: 400,
-                child: DeckBuilderPanel(), // 右侧卡组构筑界面
+                width: 350,
+                child: CardListPage(), // 右侧卡组构筑界面
               ),
           ],
         );

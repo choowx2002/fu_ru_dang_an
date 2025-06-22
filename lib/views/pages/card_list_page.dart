@@ -8,6 +8,7 @@ import 'package:fu_ru_dang_an/services/deck_builder_service.dart';
 import 'package:fu_ru_dang_an/views/widgets/card_image.dart';
 import 'package:fu_ru_dang_an/views/widgets/card_item.dart';
 import 'package:fu_ru_dang_an/views/widgets/filter_controls.dart';
+import 'package:fu_ru_dang_an/views/widgets/rich_text_icons.dart';
 import 'package:fu_ru_dang_an/views/widgets/search_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -310,12 +311,21 @@ class _CardListPageState extends State<CardListPage> {
       ],
     );
   }
+}
 
-  Future<dynamic> showCardDetailsDialog(BuildContext context, CardModel card) {
+Future<dynamic> showCardDetailsDialog(BuildContext context, CardModel card) {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(card.cardName),
+        title: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(card.cardName),
+            Text(card.cardNo, style: TextStyle(fontSize: 14)),
+          ],
+        ),
         content: SizedBox(
           width: 750,
           child: Row(
@@ -343,11 +353,9 @@ class _CardListPageState extends State<CardListPage> {
                           ),
                           Text("类别: ${card.cardCategoryName}"),
                           const SizedBox(height: 8),
-                          Text(
-                            card.cardEffect,
-                            softWrap: true,
-                            style: const TextStyle(fontSize: 14),
-                          ),
+                          RichTextWithIcons(
+                            text: card.cardEffect,
+                          )
                         ],
                       ),
                     ),
@@ -366,4 +374,3 @@ class _CardListPageState extends State<CardListPage> {
       ),
     );
   }
-}

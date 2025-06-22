@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fu_ru_dang_an/services/card_databse.dart';
 import 'package:fu_ru_dang_an/services/deck_builder_service.dart';
+import 'package:fu_ru_dang_an/views/pages/card_list_page.dart';
 import 'package:provider/provider.dart';
 
 class DeckBuilderPanel extends StatefulWidget {
@@ -66,70 +68,136 @@ class _DeckBuilderPanelState extends State<DeckBuilderPanel> {
         ],
       ),
       // ignore: unnecessary_null_comparison
-      body: deck == null
-          ? Center(child: CircularProgressIndicator()) // 或 Loading
-          : deck.isEmpty
-          ? Center(child: Text("卡组为空"))
-          : ListView.builder(
-              itemCount: deck.length,
-              itemBuilder: (context, index) {
-                final card = deck[index];
-                return Card(
-                  child: ListTile(
-                    leading: Image.network(card.card.frontImage, width: 60),
-                    title: Text(card.card.cardName),
-                    subtitle: Text(card.card.cardCategoryName),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        // 减号按钮
-                        IconButton(
-                          icon: Icon(Icons.remove_circle_outline),
-                          onPressed: () {
-                            deckService.removeCard(card.card);
-                          },
-                          tooltip: "减少数量",
-                        ),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
 
-                        // 数量文本
-                        Text(
-                          '${card.count}',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-
-                        // 加号按钮
-                        IconButton(
-                          icon: Icon(Icons.add_circle_outline),
-                          onPressed: () {
-                            deckService.addCard(card.card);
-                          },
-                          tooltip: "增加数量",
-                        ),
-                      ],
-                    ),
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (_) => AlertDialog(
-                          title: Text(card.card.cardName),
-                          content: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.network(card.card.frontImage),
-                              SizedBox(height: 8),
-                              Text("效果：${card.card.cardEffect}"),
-                              Text("稀有度：${card.count}"),
-                              Text("战力：${card.card.power ?? '-'}"),
-                            ],
-                          ),
-                        ),
-                      );
+          children: [
+            deck.legend.isEmpty
+                ? Center(child: Text("无传奇"))
+                : Builder(
+                    builder: (context) {
+                      final card = CardDatabase().getCardByNo(deck.legend);
+                      if (card == null) {
+                        return Text("error");
+                      } else {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Card(
+                              elevation: 4.0,
+                              child: Image.network(
+                                card.frontImage,
+                                width: 200.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              card.cardName,
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              card.subTitle,
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                             Text(
+                              card.tag.splitMapJoin(""),
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        );
+                      }
                     },
                   ),
-                );
-              },
-            ),
+
+            deck.mainDeck.isEmpty
+                ? Center(child: Text("卡组为空"))
+                : GridView.builder(
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 180,
+                      mainAxisSpacing: 5,
+                      crossAxisSpacing: 12,
+                      childAspectRatio: 0.593,
+                    ),
+                    itemCount: deck.mainDeck.length,
+                    itemBuilder: (context, index) {
+                      final entry = deck.mainDeck.entries.toList()[index];
+                      final cardNo = entry.key;
+                      final count = entry.value;
+                      final card = CardDatabase().getCardByNo(cardNo);
+                      if (card == null) {
+                        return Text("error");
+                      } else {
+                        return Column(
+                          children: [
+                            GestureDetector(
+                              child: Card(
+                                elevation: 4,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadiusGeometry.circular(
+                                    12,
+                                  ),
+                                ),
+                                child: Image.network(
+                                  card.frontImage,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              onSecondaryTap: () {
+                                showCardDetailsDialog(context, card);
+                              },
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 5.0,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '数量：$count',
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                  // 减号按钮
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          deckService.removeCard(card);
+                                        },
+                                        child: Icon(Icons.remove, size: 16.0),
+                                      ),
+                                      SizedBox(width: 5.0),
+                                      GestureDetector(
+                                        onTap: () {
+                                          deckService.addCard(card);
+                                        },
+                                        child: Icon(Icons.add, size: 16.0),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        );
+                      }
+                    },
+                  ),
+          ],
+        ),
+      ),
     );
   }
 }

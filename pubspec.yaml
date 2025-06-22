@@ -61,6 +61,7 @@ flutter:
     - assets/images/
     - assets/data/cards.json
     - assets/icons/
+    - assets/text_icons/
 
   fonts:
     - family: NotoSansSC

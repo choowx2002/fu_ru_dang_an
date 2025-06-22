@@ -1,94 +1,113 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:fu_ru_dang_an/data/models/deck_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/models/card_model.dart';
-import '../data/models/deck_card_model.dart';
 
 class DeckBuilderService extends ChangeNotifier {
   static const _storageKey = 'saved_deck';
 
-  List<DeckCard> _deck = [];
-  List<DeckCard> get deck => _deck;
-
-  /// 各卡片类型的最大允许数量
-  static const Map<String, int> _typeLimits = {
-    '传奇': 1,
-    '专属法术': 3,
-    '英雄单位': 3,
-    '法术': 3,
-    '装备': 3,
-    '符文': 12,
-    '单位': 3,
-    '战场': 1,
-  };
+  late DeckModel _deck;
+  DeckModel get deck => _deck;
 
   DeckBuilderService() {
+    _deck = DeckModel(
+      name: '未命名卡组',
+      author: '匿名',
+      legend: '',
+      mainDeck: {},
+      runeDeck: {},
+      battlefields: {},
+    );
     loadDeck();
   }
-
-  /// 获取总卡片数量（包含重复）
-  int get totalCardCount => _deck.fold(0, (sum, c) => sum + c.count);
 
   /// 添加卡片到卡组（根据类型数量限制）
   bool addCard(CardModel card) {
     final type = card.cardCategoryName;
-    final maxCount = _typeLimits[type] ?? 3;
+    final maxCount = DeckModel.typeLimitFor(type);
 
-    DeckCard? existing = _deck.cast<DeckCard?>().firstWhere(
-      (c) => c?.cardNo == card.cardNo,
-      orElse: () => null,
-    );
+    if (type == '传奇') {
+      _deck.legend = card.cardNo;
+    } else {
+      Map<String, int>? targetMap;
 
-    if (existing == null) {
-      _deck.add(DeckCard(card, count: 1));
-      _persistAndNotify();
-      return true;
-    } else if (existing.count < maxCount) {
-      existing.count += 1;
-      _persistAndNotify();
-      return true;
+      switch (type) {
+        case '符文':
+          targetMap = _deck.runeDeck;
+          break;
+        case '战场':
+          targetMap = _deck.battlefields;
+          if (targetMap.length >= 3) return false; // 限3个战场
+          break;
+        default:
+          targetMap = _deck.mainDeck;
+          break;
+      }
+
+      final count = targetMap[card.cardNo] ?? 0;
+      if (count >= maxCount) return false;
+
+      targetMap[card.cardNo] = count + 1;
     }
 
-    return false; // 超过限制
+    _persistAndNotify();
+    return true;
   }
 
-  /// 移除卡片（减少计数或删除）
   void removeCard(CardModel card) {
-    DeckCard? existing = _deck.cast<DeckCard?>().firstWhere(
-      (c) => c?.cardNo == card.cardNo,
-      orElse: () => null,
-    );
+    final type = card.cardCategoryName;
 
-    if (existing != null) {
-      if (existing.count <= 1) {
-        _deck.remove(existing);
-      } else {
-        existing.count -= 1;
+    Object? targetMap;
+    switch (type) {
+      case '传奇':
+        targetMap = _deck.legend;
+        break;
+      case '符文':
+        targetMap = _deck.runeDeck;
+        break;
+      case '战场':
+        targetMap = _deck.battlefields;
+        break;
+      default:
+        targetMap = _deck.mainDeck;
+        break;
+    }
+
+    if (targetMap is Map<String, int>) {
+      if (targetMap.containsKey(card.cardNo)) {
+        if (targetMap[card.cardNo]! <= 1) {
+          targetMap.remove(card.cardNo);
+        } else {
+          targetMap[card.cardNo] = targetMap[card.cardNo]! - 1;
+        }
+        _persistAndNotify();
       }
-      _persistAndNotify();
+    } else if (targetMap is String) {
+      // 处理 String 情况
     }
   }
 
   /// 清空卡组
   void clearDeck() {
-    _deck.clear();
+    _deck.legend = '';
+    _deck.mainDeck.clear();
+    _deck.runeDeck.clear();
+    _deck.battlefields.clear();
     _persistAndNotify();
   }
 
-  /// 保存卡组到本地存储
   Future<void> saveDeck() async {
     final prefs = await SharedPreferences.getInstance();
-    final deckJson = jsonEncode(_deck.map((card) => card.toJson()).toList());
-    await prefs.setString(_storageKey, deckJson);
+    final jsonString = jsonEncode(_deck.toJson());
+    await prefs.setString(_storageKey, jsonString);
   }
 
-  /// 加载卡组
   Future<void> loadDeck() async {
     final prefs = await SharedPreferences.getInstance();
-    final deckJson = prefs.getString(_storageKey);
-    if (deckJson != null) {
-      final List<dynamic> decoded = jsonDecode(deckJson);
-      _deck = decoded.map((item) => DeckCard.fromJson(item)).toList();
+    final jsonString = prefs.getString(_storageKey);
+    if (jsonString != null) {
+      _deck = DeckModel.fromJson(jsonDecode(jsonString));
       notifyListeners();
     }
   }
@@ -97,5 +116,13 @@ class DeckBuilderService extends ChangeNotifier {
   void _persistAndNotify() {
     saveDeck();
     notifyListeners();
+  }
+
+  int get totalCards {
+    final legendCount = _deck.legend.isEmpty ? 0 : 1;
+    final mainCount = _deck.mainDeck.values.fold<int>(0, (a, b) => a + b);
+    final runeCount = _deck.runeDeck.values.fold<int>(0, (a, b) => a + b);
+    final bfCount = _deck.battlefields.values.fold<int>(0, (a, b) => a + b);
+    return legendCount + mainCount + runeCount + bfCount;
   }
 }
