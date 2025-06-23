@@ -21,26 +21,26 @@ class _WidgetTree extends State<WidgetTree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: Builder(
-      //   builder: (context) => FloatingActionButton(
-      //     child: const Icon(Icons.menu),
-      //     onPressed: () {
-      //       Scaffold.of(context).openDrawer();
-      //     },
-      //   ),
-      // ),
-      appBar: AppBar(
-        title: Text("符文档案"),
-        centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        titleTextStyle: TextStyle(
-          color: Theme.of(context).colorScheme.onPrimary,
-          fontSize: 24,
-        ),
-        iconTheme: IconThemeData(
-          color: Theme.of(context).colorScheme.onPrimary,
+      floatingActionButton: Builder(
+        builder: (context) => FloatingActionButton(
+          child: const Icon(Icons.menu),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
       ),
+      // appBar: AppBar(
+      //   title: Text("符文档案"),
+      //   centerTitle: true,
+      //   backgroundColor: Theme.of(context).colorScheme.primary,
+      //   titleTextStyle: TextStyle(
+      //     color: Theme.of(context).colorScheme.onPrimary,
+      //     fontSize: 24,
+      //   ),
+      //   iconTheme: IconThemeData(
+      //     color: Theme.of(context).colorScheme.onPrimary,
+      //   ),
+      // ),
       drawer: Drawer(
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
         child: Column(

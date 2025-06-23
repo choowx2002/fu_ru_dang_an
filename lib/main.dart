@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:fu_ru_dang_an/data/notifiers.dart';
+// import 'package:fu_ru_dang_an/data/notifiers.dart';
 import 'package:fu_ru_dang_an/services/card_databse.dart';
 import 'package:fu_ru_dang_an/services/deck_builder_service.dart';
 import 'package:fu_ru_dang_an/views/widget_tree.dart';
@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
- if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('Centered Window');
 
     const windowWidth = 1024.0;
@@ -28,14 +28,14 @@ Future<void> main() async {
       setWindowFrame(frame);
     });
     setWindowMinSize(Size.fromWidth(1024));
-    setWindowMinSize(Size.fromHeight(800));    
+    setWindowMinSize(Size.fromHeight(800));
   }
   await CardDatabase().loadCards();
 
   // testing purpose clear shared data
   final prefs = await SharedPreferences.getInstance();
   await prefs.clear();
-  
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => DeckBuilderService(),
@@ -49,29 +49,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<bool>(
-      valueListenable: isDark,
-      builder: (context, darkMode, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            fontFamily: 'NotoSansSC',
-            colorScheme: darkMode
-                ? ColorScheme.fromSeed(
-                    seedColor: Colors.teal,
-                    brightness: Brightness.dark,
-                  )
-                : ColorScheme.fromSeed(
-                    seedColor: Colors.teal,
-                    brightness: Brightness.light,
-                  ),
-            useMaterial3: true,
-          ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        fontFamily: 'NotoSansSC',
+        colorScheme: ColorScheme.fromSeed(
+          brightness: Brightness.dark,
+          seedColor: Color.fromARGB(255, 26, 38, 59),
+        ),
+        useMaterial3: true,
+      ),
 
-          home: const SafeArea(child: WidgetTree()),
-        );
-      },
+      home: const SafeArea(child: WidgetTree()),
     );
   }
 }

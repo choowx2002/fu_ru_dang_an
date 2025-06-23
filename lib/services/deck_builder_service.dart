@@ -29,6 +29,12 @@ class DeckBuilderService extends ChangeNotifier {
 
     if (type == '传奇') {
       _deck.legend = card.cardNo;
+      final devidedCount = (12 / card.cardColorList.length).floor();
+      final Map<String, int> runeMap = {};
+      for (var c in card.cardColorList) {
+        runeMap[c] = devidedCount;
+      }
+      _deck.runeDeck = runeMap;
     } else {
       Map<String, int>? targetMap;
 
@@ -86,6 +92,16 @@ class DeckBuilderService extends ChangeNotifier {
     } else if (targetMap is String) {
       // 处理 String 情况
     }
+  }
+
+  void modifiedRunes(String color) {
+    final current = _deck.runeDeck[color] ?? 0;
+    if (current == 12) return;
+    _deck.runeDeck[color] = current + 1;
+    final otherColor = _deck.runeDeck.keys.firstWhere((c) => c != color);
+    final otherColorCurrent = _deck.runeDeck[otherColor] ?? 0;
+    _deck.runeDeck[otherColor] = otherColorCurrent - 1;
+    _persistAndNotify();
   }
 
   /// 清空卡组

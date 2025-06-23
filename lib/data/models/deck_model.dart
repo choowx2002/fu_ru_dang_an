@@ -5,7 +5,7 @@ class DeckModel {
 
   String legend;
   final Map<String, int> mainDeck;
-  final Map<String, int> runeDeck;
+  Map<String, int> runeDeck;
   final Map<String, int> battlefields;
 
   DeckModel({
