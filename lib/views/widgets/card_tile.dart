@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fu_ru_dang_an/data/models/supabase_card_model.dart';
 
@@ -21,15 +21,14 @@ class CardTile extends StatelessWidget {
             ),
             elevation: 4.0,
             child: AspectRatio(
-              aspectRatio: 0.71,
+              aspectRatio: 0.72,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: CachedNetworkImage(
-                  imageUrl: card.frontImage!,
+                child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage, // 透明占位图
+                  image: card.frontImage!,
                   fit: BoxFit.cover,
-                  placeholder: (context, url) =>
-                      const Center(child: CircularProgressIndicator()),
-                  errorWidget: (context, url, error) =>
+                  imageErrorBuilder: (_, __, ___) =>
                       const Icon(Icons.broken_image),
                 ),
               ),

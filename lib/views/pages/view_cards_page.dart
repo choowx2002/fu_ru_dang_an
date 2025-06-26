@@ -25,7 +25,7 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
   List<DBCardModel> cards = [];
   List<DBCardModel> filteredCards = [];
   int page = 1;
-  int pageSize = 30;
+  int pageSize = 25;
   int count = 0;
   late ScrollController _scrollController;
   late TextEditingController _searchController;
@@ -136,13 +136,13 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
               onSearchPressed: _onSearchSubmitted,
               onOpenFilterPressed: _showFilterDialog,
             ),
-            Text(count.toString()),
+            Text('搜索结果：${count.toString()}'),
             Expanded(
               child: GridView.builder(
                 controller: _scrollController,
                 padding: const EdgeInsets.all(12),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 180,
+                  maxCrossAxisExtent: 210,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
                   childAspectRatio: 0.65,

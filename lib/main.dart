@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: '符文档案',
       theme: ThemeData(
         fontFamily: 'NotoSansSC',
         colorScheme: ColorScheme.fromSeed(

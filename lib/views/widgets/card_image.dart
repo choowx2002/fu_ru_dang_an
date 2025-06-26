@@ -1,16 +1,15 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fu_ru_dang_an/data/models/supabase_card_model.dart';
 
 Widget cardImage(DBCardModel card) {
   final imageWidget = ClipRRect(
     borderRadius: BorderRadius.circular(12),
-    child: CachedNetworkImage(
-      imageUrl: card.frontImage!,
+    child: FadeInImage.memoryNetwork(
+      placeholder: kTransparentImage,
+      image: card.frontImage!,
       fit: BoxFit.cover,
-      placeholder: (context, url) =>
-          const Center(child: CircularProgressIndicator()),
-      errorWidget: (context, url, error) => const Icon(Icons.broken_image),
+      imageErrorBuilder: (_, __, ___) => const Icon(Icons.broken_image),
     ),
   );
 
