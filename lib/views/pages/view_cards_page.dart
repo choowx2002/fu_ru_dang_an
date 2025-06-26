@@ -177,174 +177,176 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
         return StatefulBuilder(
           builder: (context, setStateDialog) {
             return AlertDialog.adaptive(
-              title: Text("过滤", style: TextStyle(fontWeight: FontWeight.bold)),
+              // title: Text("过滤", style: TextStyle(fontWeight: FontWeight.bold)),
               content: Padding(
                 padding: EdgeInsets.all(10.0),
                 child: SizedBox(
                   width: 500,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //符文特性
-                      const Text(
-                        "符文特性",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 8),
-                      Wrap(
-                        spacing: 8,
-                        children: cardColorOptions.map((color) {
-                          final iconPath = cardColorIconMap[color];
-                          final isSelected = selectedColors.contains(color);
-
-                          return GestureDetector(
-                            onTap: () {
-                              setStateDialog(() {
-                                if (isSelected) {
-                                  selectedColors.remove(color);
-                                } else {
-                                  selectedColors.add(color);
-                                }
-                              });
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                // border: Border.all(),
-                                color: isSelected
-                                    ? colorBackgrounds[color]
-                                    : Colors.transparent,
-                                borderRadius: BorderRadius.circular(100),
-                              ),
-                              padding: const EdgeInsets.all(4),
-                              child: Image.asset(iconPath!),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Divider(thickness: 1),
-                      ),
-
-                      // 稀有度
-                      Text(
-                        "稀有度",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 8),
-                      Wrap(
-                        spacing: 16,
-                        runSpacing: 8,
-                        children: rarities.map((rarity) {
-                          final iconPath = cardRarityIconMap[rarity];
-                          final isSelected = selectedRarities.contains(rarity);
-                          return GestureDetector(
-                            onTap: () {
-                              setStateDialog(() {
-                                if (isSelected) {
-                                  selectedRarities.remove(rarity);
-                                } else {
-                                  selectedRarities.add(rarity);
-                                }
-                              });
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(),
-                                borderRadius: BorderRadius.circular(5),
-                                color: isSelected
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Colors.transparent,
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 4,
-                              ),
-                              child: Wrap(
-                                children: [
-                                  Image.asset(iconPath!, width: 20, height: 20),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    rarity,
-                                    style: TextStyle(
-                                      color: isSelected
-                                          ? Theme.of(
-                                              context,
-                                            ).colorScheme.onPrimary
-                                          : Theme.of(
-                                              context,
-                                            ).colorScheme.onSurface,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Divider(thickness: 1),
-                      ),
-
-                      // 卡牌类型
-                      Text(
-                        "卡牌类型",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 8),
-                      Wrap(
-                        spacing: 16,
-                        runSpacing: 8,
-                        children: categories.map((cat) {
-                          // final iconPath = cardRarityIconMap[rarity];
-                          final isSelected = selectedCardCategories.contains(
-                            cat,
-                          );
-                          return GestureDetector(
-                            onTap: () {
-                              setStateDialog(() {
-                                if (isSelected) {
-                                  selectedCardCategories.remove(cat);
-                                } else {
-                                  selectedCardCategories.add(cat);
-                                }
-                              });
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(),
-                                borderRadius: BorderRadius.circular(5),
-                                color: isSelected
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Colors.transparent,
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 4,
-                              ),
-                              child: Text(
-                                cat,
-                                style: TextStyle(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //符文特性
+                        const Text(
+                          "符文特性",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 8),
+                        Wrap(
+                          spacing: 8,
+                          children: cardColorOptions.map((color) {
+                            final iconPath = cardColorIconMap[color];
+                            final isSelected = selectedColors.contains(color);
+                    
+                            return GestureDetector(
+                              onTap: () {
+                                setStateDialog(() {
+                                  if (isSelected) {
+                                    selectedColors.remove(color);
+                                  } else {
+                                    selectedColors.add(color);
+                                  }
+                                });
+                              },
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  // border: Border.all(),
                                   color: isSelected
-                                      ? Theme.of(context).colorScheme.onPrimary
-                                      : Theme.of(context).colorScheme.onSurface,
+                                      ? colorBackgrounds[color]
+                                      : Colors.transparent,
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                padding: const EdgeInsets.all(4),
+                                child: Image.asset(iconPath!),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                    
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Divider(thickness: 1),
+                        ),
+                    
+                        // 稀有度
+                        Text(
+                          "稀有度",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 8),
+                        Wrap(
+                          spacing: 16,
+                          runSpacing: 8,
+                          children: rarities.map((rarity) {
+                            final iconPath = cardRarityIconMap[rarity];
+                            final isSelected = selectedRarities.contains(rarity);
+                            return GestureDetector(
+                              onTap: () {
+                                setStateDialog(() {
+                                  if (isSelected) {
+                                    selectedRarities.remove(rarity);
+                                  } else {
+                                    selectedRarities.add(rarity);
+                                  }
+                                });
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(),
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: isSelected
+                                      ? Theme.of(context).colorScheme.primary
+                                      : Colors.transparent,
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 4,
+                                ),
+                                child: Wrap(
+                                  children: [
+                                    Image.asset(iconPath!, width: 20, height: 20),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      rarity,
+                                      style: TextStyle(
+                                        color: isSelected
+                                            ? Theme.of(
+                                                context,
+                                              ).colorScheme.onPrimary
+                                            : Theme.of(
+                                                context,
+                                              ).colorScheme.onSurface,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Divider(thickness: 1),
-                      ),
-                    ],
+                            );
+                          }).toList(),
+                        ),
+                    
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Divider(thickness: 1),
+                        ),
+                    
+                        // 卡牌类型
+                        Text(
+                          "卡牌类型",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 8),
+                        Wrap(
+                          spacing: 16,
+                          runSpacing: 8,
+                          children: categories.map((cat) {
+                            // final iconPath = cardRarityIconMap[rarity];
+                            final isSelected = selectedCardCategories.contains(
+                              cat,
+                            );
+                            return GestureDetector(
+                              onTap: () {
+                                setStateDialog(() {
+                                  if (isSelected) {
+                                    selectedCardCategories.remove(cat);
+                                  } else {
+                                    selectedCardCategories.add(cat);
+                                  }
+                                });
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(),
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: isSelected
+                                      ? Theme.of(context).colorScheme.primary
+                                      : Colors.transparent,
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 4,
+                                ),
+                                child: Text(
+                                  cat,
+                                  style: TextStyle(
+                                    color: isSelected
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.onSurface,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                    
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Divider(thickness: 1),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -377,8 +379,11 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
 }
 
 Future<dynamic> showCardDetailsDialog(BuildContext context, DBCardModel card) {
+  final screenWidth = MediaQuery.of(context).size.width;
+  final isWide = screenWidth > 600;
+
   return showDialog(
     context: context,
-    builder: (_) => CardDetailsDialog(card: card),
+    builder: (context) => CardDetailsDialog(card: card, isWide: isWide),
   );
 }
