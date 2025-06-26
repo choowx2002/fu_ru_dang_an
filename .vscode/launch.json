@@ -7,7 +7,10 @@
         {
             "name": "fu_ru_dang_an",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+             "args": [
+                "--dart-define=SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pYnpxcm5leWpydnZ6ZmZzY2hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA3NDQyNzMsImV4cCI6MjA2NjMyMDI3M30.bAGzdYqa1eyvQzSRTxtvzNQVfag44rqybs0JN7RHEjg"
+            ]
         },
         {
             "name": "fu_ru_dang_an (profile mode)",
