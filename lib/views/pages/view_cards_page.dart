@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:fu_ru_dang_an/data/config/constant.dart'
     show
-        cardRarityOptions,
-        cardRarityIconMap,
         cardCategoryOptions,
-        colorBackgrounds,
+        cardColorIconMap,
         cardColorOptions,
-        cardColorIconMap;
+        cardRarityIconMap,
+        cardRarityOptions,
+        colorBackgrounds,
+        energyConfig,
+        mightConfig,
+        powerConfig;
+import 'package:fu_ru_dang_an/data/models/search_model.dart';
 import 'package:fu_ru_dang_an/data/models/supabase_card_model.dart'
     show DBCardModel;
 import 'package:fu_ru_dang_an/views/widgets/card_details_dialog.dart';
 import 'package:fu_ru_dang_an/views/widgets/card_tile.dart';
 import 'package:fu_ru_dang_an/views/widgets/cards_filter_bar.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:fu_ru_dang_an/views/widgets/range_slider.dart';
+import 'package:provider/provider.dart';
 
 class ViewCardsPage extends StatefulWidget {
   const ViewCardsPage({super.key});
@@ -22,33 +27,24 @@ class ViewCardsPage extends StatefulWidget {
 }
 
 class _ViewCardsPageState extends State<ViewCardsPage> {
-  List<DBCardModel> cards = [];
-  List<DBCardModel> filteredCards = [];
-  int page = 1;
-  int pageSize = 25;
-  int count = 0;
   late ScrollController _scrollController;
   late TextEditingController _searchController;
-  bool isLoading = false;
-  bool isBottom = false;
-
-  String searchQuery = "";
-  List<String> selectedRarities = [];
-  List<String> selectedCardCategories = [];
-  List<String> selectedColors = [];
 
   @override
   void initState() {
+    final model = context.read<SearchModel>();
     super.initState();
     _scrollController = ScrollController()
       ..addListener(() {
         if (_scrollController.position.pixels >=
             _scrollController.position.maxScrollExtent - 10) {
-          loadNextPage();
+          model.loadNextPage();
         }
       });
     _searchController = TextEditingController();
-    loadNextPage();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      model.resetPage();
+    });
   }
 
   @override
@@ -58,85 +54,192 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
     super.dispose();
   }
 
-  Future<void> loadNextPage() async {
-    if (isLoading | isBottom) return;
-    isLoading = true;
-    int offset = (page - 1) * pageSize;
-    final client = Supabase.instance.client;
-
-    var query = client.from('cards').select("*");
-
-    if (searchQuery.isNotEmpty) {
-      query = query.or(
-        'card_name.ilike.%$searchQuery%,card_effect.ilike.%$searchQuery%',
-      );
-    }
-
-    if (selectedRarities.isNotEmpty) {
-      final values = selectedRarities.join(',');
-      query = query.filter('rarity_name', 'in', '($values)');
-    }
-
-    if (selectedCardCategories.isNotEmpty) {
-      final values = selectedCardCategories.join(',');
-      query = query.filter('card_category_name', 'in', '($values)');
-    }
-
-    if (selectedColors.isNotEmpty) {
-      final values = '{${selectedColors.join(',')}}';
-      query = query.filter('card_color_list', 'ov', values); // can change to cs
-    }
-
-    final response = await query
-        .range(offset, offset + pageSize - 1)
-        .order('card_no', ascending: true)
-        .count(CountOption.exact);
-
-    final List data = response.data as List;
-
-    if (page == 1) {
-      setState(() => count = response.count);
-    }
-
-    // print(response);
-    final newCards = data.map((e) => DBCardModel.fromJson(e)).toList();
-    if (newCards.isEmpty) {
-      setState(() {
-        isBottom = true;
-      });
-    } else {
-      setState(() {
-        page++;
-        cards.addAll(newCards);
-        isBottom = offset + newCards.length >= response.count;
-      });
-    }
-    isLoading = false;
-  }
-
   void _onSearchSubmitted() {
-    setState(() {
-      searchQuery = _searchController.text.toLowerCase();
-      page = 1;
-      cards.clear();
-      isBottom = false;
-    });
-    loadNextPage();
+    final model = Provider.of<SearchModel>(context, listen: false);
+    final rawQuery = _searchController.text.trim().toLowerCase();
+    model.updateQuery(rawQuery);
   }
 
   @override
   Widget build(BuildContext context) {
+    final model = Provider.of<SearchModel>(context);
     return Center(
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 1280.0),
         child: Column(
           children: [
-            CardsFilterBar(
-              searchController: _searchController,
-              onSearchPressed: _onSearchSubmitted,
-              onOpenFilterPressed: _showFilterDialog,
+            Card(
+              margin: EdgeInsets.only(top: 20),
+              elevation: 4,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CardsFilterBar(
+                    searchController: _searchController,
+                    onSearchPressed: _onSearchSubmitted,
+                    onOpenFilterPressed: _showFilterDialog,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 12,
+                      right: 12,
+                      bottom: 12,
+                    ),
+                    child: Wrap(
+                      spacing: 3.0,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Text('搜索到${model.count.toString()}张'),
+                        if (model.query.trim().isNotEmpty)
+                          Chip(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 2,
+                              vertical: 0,
+                            ),
+                            label: Text('搜索词：${model.query}'),
+                            onDeleted: () {
+                              model.updateQuery('');
+                              _searchController.clear();
+                            }, // (x) 删除按钮的回调
+                            deleteIcon: Icon(Icons.close),
+                          ),
+                        if (model.color.isNotEmpty)
+                          Wrap(
+                            spacing: 3.0,
+                            children: model.color.map((c) {
+                              return Chip(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 2,
+                                  vertical: 0,
+                                ),
+                                label: Image.asset(
+                                  cardColorIconMap[c]!,
+                                  width: 20,
+                                  height: 20,
+                                ),
+                                onDeleted: () {
+                                  model.removeSingleValueFilter('color', c);
+                                }, // (x) 删除按钮的回调
+                                deleteIcon: Icon(Icons.close),
+                              );
+                            }).toList(),
+                          ),
+
+                        if (model.rarity.isNotEmpty)
+                          Wrap(
+                            spacing: 3.0,
+                            children: model.rarity.map((c) {
+                              return Chip(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 2,
+                                  vertical: 0,
+                                ),
+                                label: Wrap(
+                                  children: [
+                                    Image.asset(
+                                      cardRarityIconMap[c]!,
+                                      width: 20,
+                                      height: 20,
+                                    ),
+                                    Text(c),
+                                  ],
+                                ),
+                                onDeleted: () {
+                                  model.removeSingleValueFilter('rarity', c);
+                                }, // (x) 删除按钮的回调
+                                deleteIcon: Icon(Icons.close),
+                              );
+                            }).toList(),
+                          ),
+
+                        if (model.type.isNotEmpty)
+                          Wrap(
+                            spacing: 3.0,
+                            children: model.type.map((c) {
+                              return Chip(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 2,
+                                  vertical: 0,
+                                ),
+                                label: Text(c),
+                                onDeleted: () {
+                                  model.removeSingleValueFilter('type', c);
+                                }, // (x) 删除按钮的回调
+                                deleteIcon: Icon(Icons.close),
+                              );
+                            }).toList(),
+                          ),
+
+                        if (model.energy != energyConfig.defaultRange)
+                          Chip(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 2,
+                              vertical: 0,
+                            ),
+                            label: Text(
+                              model.energy.start == model.energy.end
+                                  ? '法力费用：${model.energy.start}'
+                                  : '法力费用：${model.energy.start} - ${model.energy.end}',
+                            ),
+                            onDeleted: () {
+                              model.setDefaultRangeValueFilter('energy');
+                            }, // (x) 删除按钮的回调
+                            deleteIcon: Icon(Icons.close),
+                          ),
+
+                        if (model.power != powerConfig.defaultRange)
+                          Chip(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 2,
+                              vertical: 0,
+                            ),
+                            label: Text(
+                              model.power.start == model.power.end
+                                  ? '法力费用：${model.power.start}'
+                                  : '法力费用：${model.power.start} - ${model.power.end}',
+                            ),
+                            onDeleted: () {
+                              model.setDefaultRangeValueFilter('power');
+                            }, // (x) 删除按钮的回调
+                            deleteIcon: Icon(Icons.close),
+                          ),
+
+                        if (model.might != mightConfig.defaultRange)
+                          Chip(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 2,
+                              vertical: 0,
+                            ),
+                            label: Text(
+                              model.might.start == model.might.end
+                                  ? '法力费用：${model.might.start}'
+                                  : '法力费用：${model.might.start} - ${model.might.end}',
+                            ),
+                            onDeleted: () {
+                              model.setDefaultRangeValueFilter('might');
+                            }, // (x) 删除按钮的回调
+                            deleteIcon: Icon(Icons.close),
+                          ),
+
+                        if (model.hasFilter)
+                          Chip(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 2,
+                              vertical: 0,
+                            ),
+                            label: Text('清除筛选'),
+                            onDeleted: () {
+                              model.clearAll();
+                              model.resetPage();
+                            }, // (x) 删除按钮的回调
+                            deleteIcon: Icon(Icons.close),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-            Text('搜索结果：${count.toString()}'),
             Expanded(
               child: GridView.builder(
                 controller: _scrollController,
@@ -147,9 +250,9 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
                   mainAxisSpacing: 12,
                   childAspectRatio: 0.65,
                 ),
-                itemCount: cards.length,
+                itemCount: model.searchResult.length,
                 itemBuilder: (context, index) {
-                  final card = cards[index];
+                  final card = model.searchResult[index];
                   return CardTile(
                     card: card,
                     onTap: () => showCardDetailsDialog(context, card),
@@ -169,6 +272,14 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
 
     List<String> categories = [...cardCategoryOptions];
     categories.removeAt(0);
+
+    final model = context.read<SearchModel>();
+    List<String> selectedRarities = [...model.rarity];
+    List<String> selectedCardCategories = [...model.type];
+    List<String> selectedColors = [...model.color];
+    RangeValues selectedEnergy = model.energy;
+    RangeValues selectedMight = model.might;
+    RangeValues selectedPower = model.power;
 
     showDialog(
       barrierDismissible: false,
@@ -197,7 +308,7 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
                           children: cardColorOptions.map((color) {
                             final iconPath = cardColorIconMap[color];
                             final isSelected = selectedColors.contains(color);
-                    
+
                             return GestureDetector(
                               onTap: () {
                                 setStateDialog(() {
@@ -224,12 +335,12 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
                             );
                           }).toList(),
                         ),
-                    
+
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Divider(thickness: 1),
                         ),
-                    
+
                         // 稀有度
                         Text(
                           "稀有度",
@@ -241,7 +352,9 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
                           runSpacing: 8,
                           children: rarities.map((rarity) {
                             final iconPath = cardRarityIconMap[rarity];
-                            final isSelected = selectedRarities.contains(rarity);
+                            final isSelected = selectedRarities.contains(
+                              rarity,
+                            );
                             return GestureDetector(
                               onTap: () {
                                 setStateDialog(() {
@@ -266,7 +379,11 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
                                 ),
                                 child: Wrap(
                                   children: [
-                                    Image.asset(iconPath!, width: 20, height: 20),
+                                    Image.asset(
+                                      iconPath!,
+                                      width: 20,
+                                      height: 20,
+                                    ),
                                     const SizedBox(width: 8),
                                     Text(
                                       rarity,
@@ -286,12 +403,12 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
                             );
                           }).toList(),
                         ),
-                    
+
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Divider(thickness: 1),
                         ),
-                    
+
                         // 卡牌类型
                         Text(
                           "卡牌类型",
@@ -332,18 +449,55 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
                                   cat,
                                   style: TextStyle(
                                     color: isSelected
-                                        ? Theme.of(context).colorScheme.onPrimary
-                                        : Theme.of(context).colorScheme.onSurface,
+                                        ? Theme.of(
+                                            context,
+                                          ).colorScheme.onPrimary
+                                        : Theme.of(
+                                            context,
+                                          ).colorScheme.onSurface,
                                   ),
                                 ),
                               ),
                             );
                           }).toList(),
                         ),
-                    
+
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Divider(thickness: 1),
+                        ),
+
+                        RangeSliderWidget(
+                          minMaxRange: energyConfig.minMax,
+                          rangeValue: selectedEnergy,
+                          onValueChanged: (value) {
+                            setStateDialog(() {
+                              selectedEnergy = value;
+                            });
+                          },
+                          title: energyConfig.title,
+                        ),
+
+                        RangeSliderWidget(
+                          minMaxRange: powerConfig.minMax,
+                          rangeValue: selectedPower,
+                          onValueChanged: (value) {
+                            setStateDialog(() {
+                              selectedPower = value;
+                            });
+                          },
+                          title: powerConfig.title,
+                        ),
+
+                        RangeSliderWidget(
+                          minMaxRange: mightConfig.minMax,
+                          rangeValue: selectedMight,
+                          onValueChanged: (value) {
+                            setStateDialog(() {
+                              selectedMight = value;
+                            });
+                          },
+                          title: mightConfig.title,
                         ),
                       ],
                     ),
@@ -360,12 +514,18 @@ class _ViewCardsPageState extends State<ViewCardsPage> {
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
-                    setState(() {
-                      page = 1;
-                      cards.clear();
-                      isBottom = false;
-                    });
-                    loadNextPage();
+                    final model = Provider.of<SearchModel>(
+                      context,
+                      listen: false,
+                    );
+                    model.updateFilter(
+                      color: selectedColors,
+                      energy: selectedEnergy,
+                      might: selectedMight,
+                      type: selectedCardCategories,
+                      power: selectedPower,
+                      rarity: selectedRarities,
+                    );
                   },
                   child: Text("确定"),
                 ),

@@ -28,7 +28,7 @@ class CardTile extends StatelessWidget {
                   placeholder: kTransparentImage, // 透明占位图
                   image: card.frontImage!,
                   fit: BoxFit.cover,
-                  imageErrorBuilder: (_, __, ___) =>
+                  imageErrorBuilder: (_, _, _) =>
                       const Icon(Icons.broken_image),
                 ),
               ),

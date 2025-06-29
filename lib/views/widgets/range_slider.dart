@@ -20,38 +20,35 @@ class RangeSliderWidget extends StatelessWidget {
       1,
       100,
     );
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 300),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
-              if (rangeValue == minMaxRange)
-                const Text("全部", style: TextStyle(fontWeight: FontWeight.bold))
-              else
-                Text(
-                  "${rangeValue.start.round()}-${rangeValue.end.round()}",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-            ],
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
+            if (rangeValue == minMaxRange)
+              const Text("全部", style: TextStyle(fontWeight: FontWeight.bold))
+            else
+              Text(
+                "${rangeValue.start.round()}-${rangeValue.end.round()}",
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+          ],
+        ),
+        RangeSlider(
+          values: rangeValue,
+          min: minMaxRange.start,
+          max: minMaxRange.end,
+          divisions: division,
+          labels: RangeLabels(
+            rangeValue.start.round().toString(),
+            rangeValue.end.round().toString(),
           ),
-          RangeSlider(
-            values: rangeValue,
-            min: minMaxRange.start,
-            max: minMaxRange.end,
-            divisions: division,
-            labels: RangeLabels(
-              rangeValue.start.round().toString(),
-              rangeValue.end.round().toString(),
-            ),
-            onChanged: onValueChanged,
-          ),
-        ],
-      ),
+          onChanged: onValueChanged,
+        ),
+      ],
     );
   }
 }

@@ -9,7 +9,7 @@ Widget cardImage(DBCardModel card) {
       placeholder: kTransparentImage,
       image: card.frontImage!,
       fit: BoxFit.cover,
-      imageErrorBuilder: (_, __, ___) => const Icon(Icons.broken_image),
+      imageErrorBuilder: (_, _, _) => const Icon(Icons.broken_image),
     ),
   );
 
